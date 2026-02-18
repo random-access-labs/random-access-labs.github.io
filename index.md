@@ -44,4 +44,4 @@ We utilize a modular, modern stack to maintain high iteration speed across all l
 For project inquiries or technical support, contact the lab at:
 **[therandomaccesslabs@gmail.com](mailto:therandomaccesslabs@gmail.com)**
 
-&copy; 2026 Random Access Labs. [Privacy Policy](/privacy) | [Terms of Service](/terms)
+| &copy; 2026 Random Access Labs. | [Privacy Policy](/privacy) | [Terms of Service](/terms) |
