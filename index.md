@@ -11,7 +11,9 @@ _Directly accessing innovation at the speed of O(1) ⚡_
 ### Current Production
 
 **SYLO**
-* *Type: Mobile Game*
+
+*Type: Mobile Game*
+
 A geometric noir experience focused on high-precision rhythmic timing and physics-based movement. Built on a custom engine to ensure responsive, kinetic feedback.
 * **Platform:** iOS and Android
 * **Status:** Available on [![App Store](https://img.shields.io/badge/App_Store-000000?logo=apple&logoColor=white)](https://apps.apple.com/us/app/sylo/id6759213888) and [![Google Play](https://img.shields.io/badge/Google_Play-414141?logo=google-play&logoColor=white)](#)
@@ -19,10 +21,12 @@ A geometric noir experience focused on high-precision rhythmic timing and physic
 #
 
 **QRido**
-* *Type: Web Application (Utility)*
+
+*Type: Web Application (Utility)*
+
 A privacy-focused, minimalist utility for instant QR code generation. Designed for speed with no tracking, no advertisements, and no user data collection.
 * **Platform:** Web
-* **Status:** [Web App](https://qrido.bharticomputer.in)
+* **Status:** [Live Website](https://qrido.bharticomputer.in)
 
 ---
 
