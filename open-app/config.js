@@ -1,6 +1,6 @@
 // Add new apps to Random Access Labs here
 const APP_CONFIGS = {
-    sylo: {
+    "sylo-game": {
         name: "SYLO",
         iosStore: "https://apps.apple.com/us/app/sylo/id6759213888",
         androidStore: "https://play.google.com/store/apps/details?id=com.randomaccesslabs.sylo",
