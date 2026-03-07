@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "YWGV4Y4HY7.com.randomaccesslabs.sylo",
+        "paths": ["/open*", "/sylo*"]
+      }
+    ]
+  }
+}
