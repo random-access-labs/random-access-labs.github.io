@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Random Access Labs | Redirect</title>
+    <script src="./config.js"></script> 
+    <style>
+        body { background: #000; color: #fff; font-family: monospace; 
+               display: flex; justify-content: center; align-items: center; height: 100vh; }
+    </style>
+</head>
+<body>
+    <div id="status">INITIALIZING_SYNC...</div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const appId = params.get('app')?.toLowerCase();
+        const config = APP_CONFIGS[appId];
+
+        if (!config) {
+            window.location.replace("https://github.com/RandomAccessLabs");
+        } else {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            const isiOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
+            const isAndroid = /android/i.test(userAgent);
+
+            // 1. Try Deep Link (Internal App Launch)
+            window.location.href = config.deepLink;
+
+            // 2. Fallback to Store/Web after 600ms if app didn't open
+            setTimeout(() => {
+                if (isiOS && config.iosStore) {
+                    window.location.replace(config.iosStore);
+                } else if (isAndroid && config.androidStore) {
+                    window.location.replace(config.androidStore);
+                } else {
+                    window.location.replace(config.webFallback);
+                }
+            }, 600);
+        }
+    </script>
+</body>
+</html>
