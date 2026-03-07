@@ -1,0 +1,10 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.randomaccesslabs.sylo",
+    "sha256_cert_fingerprints": [
+      "FB:92:E3:80:64:E0:3E:00:CE:AB:7F:EA:EA:22:89:C5:68:E1:15:F5:73:3D:DF:E2:01:0F:94:3C:5B:8E:ED:0E"
+    ]
+  }
+}]
