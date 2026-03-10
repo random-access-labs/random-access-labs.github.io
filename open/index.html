@@ -1,21 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="Open the app or install it from your app store.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Random Access Labs">
+    <meta property="og:title" content="Random Access Labs">
+    <meta property="og:description" content="Open the app or install it from your app store.">
+    <meta property="og:image" content="./assets/common/og-image.png">
+    <meta property="og:url" content="https://random-access-labs.github.io">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Random Access Labs | Redirect">
+    <meta name="twitter:description" content="Open the app or install it from your app store.">
+    <meta name="twitter:image" content="./assets/common/og-image.png">
+    <link rel="icon" href="./assets/common/icon.png">
+    <link rel="apple-touch-icon" href="./assets/common/apple-touch-icon.png">
     <title>Random Access Labs | Redirect</title>
-    <script src="./config.js"></script> 
+    <script src="./config.js"></script>
     <style>
-        body { background: #000; color: #fff; font-family: monospace; 
-               display: flex; justify-content: center; align-items: center; height: 100vh; }
+        :root {
+            color-scheme: light dark;
+            --bg-color: #000;
+            --text-color: #fff;
+        }
+
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg-color: #fff;
+                --text-color: #000;
+            }
+        }
+
+        body {
+            background: var(--bg-color);
+            color: var(--text-color);
+            font-family: monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
     </style>
 </head>
+
 <body>
-    <div id="status">INITIALIZING_SYNC...</div>
+    <div id="status">Opening app...</div>
 
     <script>
+        const appConfigs = typeof APP_CONFIGS === "object" && APP_CONFIGS ? APP_CONFIGS : {};
+        const redirectMetadata = typeof REDIRECT_METADATA === "object" && REDIRECT_METADATA ? REDIRECT_METADATA : {};
+        const commonMetadata = redirectMetadata.common && typeof redirectMetadata.common === "object"
+            ? redirectMetadata.common
+            : {};
+
+        function firstNonEmpty(...values) {
+            return values.find((value) => typeof value === "string" && value.trim().length > 0);
+        }
+
+        function toAbsoluteUrl(url) {
+            if (!url) return "";
+            try {
+                return new URL(url, window.location.href).href;
+            } catch (_) {
+                return url;
+            }
+        }
+
+        function upsertMetaByName(name, content) {
+            if (!content) return;
+            let tag = document.head.querySelector(`meta[name="${name}"]`);
+            if (!tag) {
+                tag = document.createElement("meta");
+                tag.setAttribute("name", name);
+                document.head.appendChild(tag);
+            }
+            tag.setAttribute("content", content);
+        }
+
+        function upsertMetaByProperty(property, content) {
+            if (!content) return;
+            let tag = document.head.querySelector(`meta[property="${property}"]`);
+            if (!tag) {
+                tag = document.createElement("meta");
+                tag.setAttribute("property", property);
+                document.head.appendChild(tag);
+            }
+            tag.setAttribute("content", content);
+        }
+
+        function upsertLink(rel, href) {
+            if (!href) return;
+            let tag = document.head.querySelector(`link[rel="${rel}"]`);
+            if (!tag) {
+                tag = document.createElement("link");
+                tag.setAttribute("rel", rel);
+                document.head.appendChild(tag);
+            }
+            tag.setAttribute("href", href);
+        }
+
+        function resolveMetadata(config, appId) {
+            const appMetadata = config && typeof config.metadata === "object" ? config.metadata : {};
+            const generatedTitle = config && config.name ? `Open ${config.name}` : "";
+            const generatedDescription = config && config.name
+                ? `Open ${config.name} or install it from your device app store.`
+                : "";
+
+            const title = firstNonEmpty(
+                appMetadata.title,
+                config?.pageTitle,
+                generatedTitle,
+                commonMetadata.title
+            );
+
+            const description = firstNonEmpty(
+                appMetadata.description,
+                generatedDescription,
+                commonMetadata.description
+            );
+
+            const icon = firstNonEmpty(
+                appMetadata.icon,
+                appId ? `./assets/${appId}/icon.png` : "",
+                commonMetadata.icon
+            );
+
+            const appleTouchIcon = firstNonEmpty(
+                appMetadata.appleTouchIcon,
+                appId ? `./assets/${appId}/apple-touch-icon.png` : "",
+                commonMetadata.appleTouchIcon
+            );
+
+            const ogImage = firstNonEmpty(
+                appMetadata.ogImage,
+                appId ? `./assets/${appId}/og-image.png` : "",
+                commonMetadata.ogImage
+            );
+
+            return {
+                title,
+                description,
+                siteName: firstNonEmpty(appMetadata.siteName, commonMetadata.siteName),
+                ogType: firstNonEmpty(appMetadata.ogType, commonMetadata.ogType),
+                twitterCard: firstNonEmpty(appMetadata.twitterCard, commonMetadata.twitterCard),
+                icon,
+                appleTouchIcon,
+                ogImage
+            };
+        }
+
+        function applyMetadata(metadata) {
+            const ogImageAbsolute = toAbsoluteUrl(metadata.ogImage);
+            const canonicalUrl = toAbsoluteUrl(window.location.href);
+
+            document.title = metadata.title;
+            upsertMetaByName("description", metadata.description);
+
+            upsertMetaByProperty("og:type", metadata.ogType);
+            upsertMetaByProperty("og:site_name", metadata.siteName);
+            upsertMetaByProperty("og:title", metadata.title);
+            upsertMetaByProperty("og:description", metadata.description);
+            upsertMetaByProperty("og:image", ogImageAbsolute);
+            upsertMetaByProperty("og:url", canonicalUrl);
+
+            upsertMetaByName("twitter:card", metadata.twitterCard);
+            upsertMetaByName("twitter:title", metadata.title);
+            upsertMetaByName("twitter:description", metadata.description);
+            upsertMetaByName("twitter:image", ogImageAbsolute);
+
+            upsertLink("icon", metadata.icon);
+            upsertLink("apple-touch-icon", metadata.appleTouchIcon);
+        }
+
         const params = new URLSearchParams(window.location.search);
         const appId = params.get('app')?.toLowerCase();
-        const config = APP_CONFIGS[appId];
+        const config = appConfigs[appId];
+        applyMetadata(resolveMetadata(config, appId));
+        document.getElementById("status").textContent = config?.name ? `Opening ${config.name}...` : "Opening app...";
 
         if (!config) {
             window.location.replace("https://github.com/RandomAccessLabs");
@@ -40,4 +202,5 @@
         }
     </script>
 </body>
+
 </html>
