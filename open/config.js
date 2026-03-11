@@ -21,10 +21,10 @@ const REDIRECT_METADATA = {
 const APP_CONFIGS = {
     "sylo-game": {
         name: "SYLO",
-        pageTitle: "Open SYLO Game",
+        pageTitle: "SYLO",
         metadata: {
             // Per-app overrides use the same specs as common metadata above.
-            description: "Open SYLO instantly or install it from your app store.",
+            description: "A game by Jubin Savla, Open or Install it from app store",
             icon: "./assets/sylo-game/sylo-icon-512.png",
             appleTouchIcon: "./assets/sylo-game/sylo-icon-180.jpg",
             ogImage: "./assets/sylo-game/sylo-icon-1200x630.jpg"
