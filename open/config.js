@@ -34,6 +34,20 @@ const APP_CONFIGS = {
         deepLink: "sylo-game://",
         webFallback: "https://random-access-labs.github.io/#current-production"
     },
+    "spatial-counter": {
+        name: "Spatial Counter",
+        pageTitle: "Spatial Counter",
+        metadata: {
+            description: "A premium spatial tally tracker. Clean, distraction-free counting — no ads, no tracking.",
+            icon: "./assets/spatial-counter/icon.png",
+            appleTouchIcon: "./assets/spatial-counter/apple-touch-icon.png",
+            ogImage: "./assets/spatial-counter/og-image.png"
+        },
+        iosStore: "https://apps.apple.com/us/app/spacial-counter/id6772210890",
+        androidStore: "https://play.google.com/store/apps/details?id=com.therandomaccesslabs.counterapp", // Coming soon
+        deepLink: "spatial-counter://",
+        webFallback: "https://random-access-labs.github.io/#current-production"
+    },
     qrido: {
         name: "QRido",
         pageTitle: "Open QRido App",

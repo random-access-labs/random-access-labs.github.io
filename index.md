@@ -20,6 +20,16 @@ A geometric noir experience focused on high-precision rhythmic timing and physic
 
 #
 
+**Spatial Counter**
+
+*Type: Mobile App (Utility)*
+
+A premium spatial tally tracker built for precision counting. Clean, distraction-free design with no ads, no tracking, and no unnecessary complexity — just accurate, effortless tallying.
+* **Platform:** iOS and Android
+* **Status:** Available on [![App Store](https://img.shields.io/badge/App_Store-000000?logo=apple&logoColor=white)](https://apps.apple.com/us/app/spacial-counter/id6772210890) and [![Google Play](https://img.shields.io/badge/Google_Play-414141?logo=google-play&logoColor=white)](https://play.google.com/store/apps/details?id=com.therandomaccesslabs.counterapp)
+
+#
+
 **QRido**
 
 *Type: Web Application (Utility)*

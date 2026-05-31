@@ -7,6 +7,13 @@ const APP_CONFIGS = {
         deepLink: "sylo-game://",
         webFallback: "https://random-access-labs.github.io/#current-production"
     },
+    "spatial-counter": {
+        name: "Spatial Counter",
+        iosStore: "https://apps.apple.com/us/app/spacial-counter/id6772210890",
+        androidStore: "https://play.google.com/store/apps/details?id=com.therandomaccesslabs.counterapp", // Coming soon
+        deepLink: "spatial-counter://",
+        webFallback: "https://random-access-labs.github.io/#current-production"
+    },
     qrido: {
         name: "QRido",
         iosStore: null, // Update once launched on App Store
