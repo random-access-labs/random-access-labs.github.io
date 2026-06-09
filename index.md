@@ -16,7 +16,7 @@ _Directly accessing innovation at the speed of O(1) ⚡_
 
 A geometric noir experience focused on high-precision rhythmic timing and physics-based movement. Built on a custom engine to ensure responsive, kinetic feedback.
 * **Platform:** iOS and Android
-* **Status:** Available on [![App Store](https://img.shields.io/badge/App_Store-000000?logo=apple&logoColor=white)](https://apps.apple.com/us/app/sylo/id6759213888) and [![Google Play](https://img.shields.io/badge/Google_Play-414141?logo=google-play&logoColor=white)](#)
+* **Status:** Available on [![App Store](https://img.shields.io/badge/App_Store-000000?logo=apple&logoColor=white)](https://apps.apple.com/us/app/sylo/id6759213888) and [![Google Play](https://img.shields.io/badge/Google_Play-414141?logo=google-play&logoColor=white)](https://play.google.com/store/apps/details?id=com.randomaccesslabs.sylo)
 
 #
 
